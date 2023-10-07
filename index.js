@@ -32,7 +32,7 @@ app.post("/images", upload.array("files", 100), async (req, res) => {
     for (let file of req.files) {
         data.push({
             name: file.filename,
-            src: `https://localhost:5000/images/` + file.filename
+            src: `https://photo-gallery-api-bsmz.onrender.com/images/` + file.filename
         })
     }
     data = data.concat(images)
