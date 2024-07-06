@@ -3,8 +3,9 @@ const multer = require("multer")
 const fs = require("fs")
 const path = require("path")
 const cors = require("cors")
+require("dotenv").config()
 
-const PORT = process.env.PORT || 3030
+const PORT = 5000
 
 const app = express()
 app.use(cors())
@@ -32,7 +33,7 @@ app.post("/images", upload.array("files", 100), async (req, res) => {
     for (let file of req.files) {
         data.push({
             name: file.filename,
-            src: `https://photo-gallery-api-bsmz.onrender.com/images/` + file.filename
+            src: process.env.HOSTED_URL + `/images/` + file.filename
         })
     }
     data = data.concat(images)
